@@ -1,0 +1,560 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HockeyApp</name>
+    </assembly>
+    <members>
+        <member name="T:HockeyApp.Gui.UpdateWindow1">
+            <summary>
+            Interaction logic for UpdateWindow.xaml
+            </summary>
+            <summary>
+            UpdateWindow
+            </summary>
+        </member>
+        <member name="M:HockeyApp.Gui.UpdateWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPF.Configure(System.String,System.String,System.String,System.String,System.Func{System.Exception,System.String},System.String,System.String,System.Boolean)">
+            <summary>
+            Configures the HockeyAppSDK
+            </summary>
+            <param name="appIdentifier">Identifier of the app</param>
+            <param name="appVersionInformation">optional version of the app. If null the executing assembly version is used</param>
+            <param name="userID">optional user id - e.g. the logged in user</param>
+            <param name="contactInformation">optional contact information like an email adress</param>
+            <param name="descriptionLoader">optional delegate for attaching description information like event logs etc. Can be null.</param>
+            <param name="apiBase">optional: apiBase - if not the standard is used</param>
+            <param name="userAgentString">The user agent string.</param>
+            <param name="keepRunning">optional: if an unhandled exception is thrown on the dispatcher thread, the system can be kept alive - default is false</param>
+            <exception cref="T:System.Exception">ApiBase must not be empty!</exception>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPF.SendCrashesNowAsync">
+            <summary>
+            Sends all available crashes
+            </summary>
+            <returns>Task</returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPF.CreateFeedbackThread">
+            <summary>
+            Creates a new Feedback-Thread. Thread is stored on the server with the first message.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPF.OpenFeedbackThreadAsync(System.String)">
+            <summary>
+            Opens a Feedback-Thread on the server.
+            </summary>
+            <param name="feedbackToken">A guid which identifies the Feedback-Thread</param>
+            <returns>The Feedback-Thread or, if not found or delete, null.</returns>
+        </member>
+        <member name="P:HockeyApp.HockeyClientWPF.CrashesAvailable">
+            <summary>
+            Returns, if not sent crashes are available
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeyClientWPF.CrashesAvailableCount">
+            <summary>
+            returns the amount of crashes, which are not sent
+            </summary>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.RegisterDefaultUnobservedTaskExceptionHandler(HockeyApp.IHockeyClientConfigurable)">
+            <summary>
+            Adds the handler for UnobservedTaskExceptions
+            </summary>
+            <param name="this"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.UnregisterDefaultUnobservedTaskExceptionHandler(HockeyApp.IHockeyClientConfigurable)">
+            <summary>
+            Removes the handler for UnobservedTaskExceptions
+            </summary>
+            <param name="this"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.RegisterCustomUnhandledExceptionLogic(HockeyApp.IHockeyClientConfigurable,System.Action{System.UnhandledExceptionEventArgs})">
+            <summary>
+            This will run after HockeyApp has written the crash-log to disk.
+            </summary>
+            <param name="this"></param>
+            <param name="customAction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.RegisterCustomUnobserveredTaskExceptionLogic(HockeyApp.IHockeyClientConfigurable,System.Action{System.Threading.Tasks.UnobservedTaskExceptionEventArgs})">
+            <summary>
+            This will run after HockeyApp has written the crash-log to disk.
+            </summary>
+            <param name="this"></param>
+            <param name="customAction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.RegisterCustomDispatcherUnhandledExceptionLogic(HockeyApp.IHockeyClientConfigurable,System.Action{System.Windows.Threading.DispatcherUnhandledExceptionEventArgs})">
+            <summary>
+            This will run after HockeyApp has written the crash-log to disk.
+            </summary>
+            <param name="this"></param>
+            <param name="customAction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.UseCustomResourceManager(HockeyApp.IHockeyClientConfigurable,System.Resources.ResourceManager)">
+            <summary>
+            Provide a custom resource manager to override standard sdk i18n strings
+            </summary>
+            <param name="this"></param>
+            <param name="manager">resource manager to use</param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.CheckForUpdatesAsync(HockeyApp.IHockeyClient,System.Boolean,System.Func{System.Boolean},System.Action{HockeyApp.IAppVersion})">
+            <summary>
+            Check for available updates asynchronously.
+            </summary>
+            <param name="this">The this.</param>
+            <param name="autoShowUi">Use the default update dialogs</param>
+            <param name="shutdownActions">Callback to gracefully stop your application. If using default-ui, call has to be provided.</param>
+            <param name="updateAvailableAction">Callback for available versions, if you want to provide own update dialogs</param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.CreateFeedbackThread(HockeyApp.IHockeyClient)">
+            <summary>
+            Creates a new Feedback-Thread. Thread is stored on the server with the first message.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.OpenFeedbackThreadAsync(HockeyApp.IHockeyClient,System.String)">
+            <summary>
+            Opens a Feedback-Thread on the server.
+            </summary>
+            <param name="this">The this.</param>
+            <param name="feedbackToken">A guid which identifies the Feedback-Thread</param>
+            <returns>
+            The Feedback-Thread or, if not found or delete, null.
+            </returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.SendCrashesAsync(HockeyApp.IHockeyClient,System.Boolean)">
+            <summary>
+            Send crashes to the HockeyApp server. If crashes are available a messagebox will popoup to ask the user if he wants to send crashes.
+            </summary>
+            <param name="this"></param>
+            <param name="sendAutomatically">if true crashes will be sent without asking</param>
+            <returns></returns>
+        </member>
+        <member name="T:HockeyApp.HockeySDKStrings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.CrashLogMessageBox">
+            <summary>
+              Looks up a localized string similar to Crash Logs.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.CrashLogQuestion">
+            <summary>
+              Looks up a localized string similar to The program or a background process quit unexpectedly. Would you like to send information about this to the developer?.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.ReleaseNotes">
+            <summary>
+              Looks up a localized string similar to Release notes:.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.UpdateCancelButton">
+            <summary>
+              Looks up a localized string similar to Cancel.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.UpdateHeader">
+            <summary>
+              Looks up a localized string similar to A new version of {0} is available!.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.UpdateInstallButton">
+            <summary>
+              Looks up a localized string similar to Install.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.UpdateText">
+            <summary>
+              Looks up a localized string similar to A new version of {0} is available (your version is {1}, new version is {2}). Would you like to update now?.
+            </summary>
+        </member>
+        <member name="M:HockeyApp.IAppVersionExtensions.DownloadMsi(HockeyApp.IAppVersion,System.Func{HockeyApp.DownloadProgressInformation,System.Boolean},System.Action)">
+            <summary>
+            Downloads the new version to a temporary folder and provides the generated filename.
+            The progress delegate returns, if the download process should be canceled. Return false, if not.
+            </summary>
+            <param name="this">The this.</param>
+            <param name="progress">The progress.</param>
+            <param name="completed">callbakc when download is completed.</param>
+            <returns>
+            Filename of the msi-file
+            </returns>
+        </member>
+        <member name="M:HockeyApp.IAppVersionExtensions.InstallVersion(HockeyApp.IAppVersion)">
+            <summary>
+            Installs the app. If not downloaded, the download will start implicitly.
+            After starting the install process a call to Environment.Exit is done.
+            </summary>
+            <param name="this"></param>
+        </member>
+        <member name="M:HockeyApp.IUpdateManager.CheckForUpdates(System.Boolean,System.Func{System.Boolean},System.Action{HockeyApp.IAppVersion})">
+            <summary>
+            Check for available updates synchronously. The version information has to be in the format d*.d*[.d*.[d*]].
+            If System.Version.TryParse() fails, no Version compare can be executed
+            </summary>
+            <param name="autoShowUi">Use the default update dialogs</param>
+            <param name="shutdownActions">Callback to gracefully stop your application. If using default-ui, call has to be provided.</param>
+            <param name="updateAvailableAction">Callback for available versions, if you want to provide own update dialogs</param>
+        </member>
+        <member name="M:HockeyApp.IUpdateManager.CheckForUpdatesAsync(System.Boolean,System.Func{System.Boolean},System.Action{HockeyApp.IAppVersion})">
+            <summary>
+            Check for available updates asynchronously. The version information has to be in the format d*.d*[.d*.[d*]].
+            If System.Version.TryParse() fails, no Version compare can be executed
+            </summary>
+            <param name="autoShowUi">Use the default update dialogs</param>
+            <param name="shutdownActions">The shutdown actions.</param>
+            <param name="updateAvailableAction">Callback for available versions, if you want to provide own update dialogs</param>
+            <returns>false if no new version is found</returns>
+        </member>
+        <member name="T:HockeyApp.LocalizedStrings">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.ResourceWrapper.Item(System.String)">
+            <summary>
+            The indexer is needed to be able to use indexer-syntax in XAML to data bind
+            </summary>
+            <param name="index">The name of the property.</param>
+            <returns>The value of the property, or null if the property doesn't exist.</returns>
+        </member>
+        <member name="T:HockeyApp.NamespaceDoc">
+            <summary>
+            Main namespace for HockeyApp SDK for windows
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HockeyApp</name>
+    </assembly>
+    <members>
+        <member name="T:HockeyApp.Gui.UpdateWindow1">
+            <summary>
+            Interaction logic for UpdateWindow.xaml
+            </summary>
+            <summary>
+            UpdateWindow
+            </summary>
+        </member>
+        <member name="M:HockeyApp.Gui.UpdateWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPF.Configure(System.String,System.String,System.String,System.String,System.Func{System.Exception,System.String},System.String,System.String,System.Boolean)">
+            <summary>
+            Configures the HockeyAppSDK
+            </summary>
+            <param name="appIdentifier">Identifier of the app</param>
+            <param name="appVersionInformation">optional version of the app. If null the executing assembly version is used</param>
+            <param name="userID">optional user id - e.g. the logged in user</param>
+            <param name="contactInformation">optional contact information like an email adress</param>
+            <param name="descriptionLoader">optional delegate for attaching description information like event logs etc. Can be null.</param>
+            <param name="apiBase">optional: apiBase - if not the standard is used</param>
+            <param name="userAgentString">The user agent string.</param>
+            <param name="keepRunning">optional: if an unhandled exception is thrown on the dispatcher thread, the system can be kept alive - default is false</param>
+            <exception cref="T:System.Exception">ApiBase must not be empty!</exception>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPF.SendCrashesNowAsync">
+            <summary>
+            Sends all available crashes
+            </summary>
+            <returns>Task</returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPF.CreateFeedbackThread">
+            <summary>
+            Creates a new Feedback-Thread. Thread is stored on the server with the first message.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPF.OpenFeedbackThreadAsync(System.String)">
+            <summary>
+            Opens a Feedback-Thread on the server.
+            </summary>
+            <param name="feedbackToken">A guid which identifies the Feedback-Thread</param>
+            <returns>The Feedback-Thread or, if not found or delete, null.</returns>
+        </member>
+        <member name="P:HockeyApp.HockeyClientWPF.CrashesAvailable">
+            <summary>
+            Returns, if not sent crashes are available
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeyClientWPF.CrashesAvailableCount">
+            <summary>
+            returns the amount of crashes, which are not sent
+            </summary>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.RegisterDefaultUnobservedTaskExceptionHandler(HockeyApp.IHockeyClientConfigurable)">
+            <summary>
+            Adds the handler for UnobservedTaskExceptions
+            </summary>
+            <param name="this"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.UnregisterDefaultUnobservedTaskExceptionHandler(HockeyApp.IHockeyClientConfigurable)">
+            <summary>
+            Removes the handler for UnobservedTaskExceptions
+            </summary>
+            <param name="this"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.RegisterCustomUnhandledExceptionLogic(HockeyApp.IHockeyClientConfigurable,System.Action{System.UnhandledExceptionEventArgs})">
+            <summary>
+            This will run after HockeyApp has written the crash-log to disk.
+            </summary>
+            <param name="this"></param>
+            <param name="customAction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.RegisterCustomUnobserveredTaskExceptionLogic(HockeyApp.IHockeyClientConfigurable,System.Action{System.Threading.Tasks.UnobservedTaskExceptionEventArgs})">
+            <summary>
+            This will run after HockeyApp has written the crash-log to disk.
+            </summary>
+            <param name="this"></param>
+            <param name="customAction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.RegisterCustomDispatcherUnhandledExceptionLogic(HockeyApp.IHockeyClientConfigurable,System.Action{System.Windows.Threading.DispatcherUnhandledExceptionEventArgs})">
+            <summary>
+            This will run after HockeyApp has written the crash-log to disk.
+            </summary>
+            <param name="this"></param>
+            <param name="customAction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.UseCustomResourceManager(HockeyApp.IHockeyClientConfigurable,System.Resources.ResourceManager)">
+            <summary>
+            Provide a custom resource manager to override standard sdk i18n strings
+            </summary>
+            <param name="this"></param>
+            <param name="manager">resource manager to use</param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.CheckForUpdatesAsync(HockeyApp.IHockeyClient,System.Boolean,System.Func{System.Boolean},System.Action{HockeyApp.IAppVersion})">
+            <summary>
+            Check for available updates asynchronously.
+            </summary>
+            <param name="this">The this.</param>
+            <param name="autoShowUi">Use the default update dialogs</param>
+            <param name="shutdownActions">Callback to gracefully stop your application. If using default-ui, call has to be provided.</param>
+            <param name="updateAvailableAction">Callback for available versions, if you want to provide own update dialogs</param>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.CreateFeedbackThread(HockeyApp.IHockeyClient)">
+            <summary>
+            Creates a new Feedback-Thread. Thread is stored on the server with the first message.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.OpenFeedbackThreadAsync(HockeyApp.IHockeyClient,System.String)">
+            <summary>
+            Opens a Feedback-Thread on the server.
+            </summary>
+            <param name="this">The this.</param>
+            <param name="feedbackToken">A guid which identifies the Feedback-Thread</param>
+            <returns>
+            The Feedback-Thread or, if not found or delete, null.
+            </returns>
+        </member>
+        <member name="M:HockeyApp.HockeyClientWPFExtensions.SendCrashesAsync(HockeyApp.IHockeyClient,System.Boolean)">
+            <summary>
+            Send crashes to the HockeyApp server. If crashes are available a messagebox will popoup to ask the user if he wants to send crashes.
+            </summary>
+            <param name="this"></param>
+            <param name="sendAutomatically">if true crashes will be sent without asking</param>
+            <returns></returns>
+        </member>
+        <member name="T:HockeyApp.HockeySDKStrings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.CrashLogMessageBox">
+            <summary>
+              Looks up a localized string similar to Crash Logs.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.CrashLogQuestion">
+            <summary>
+              Looks up a localized string similar to The program or a background process quit unexpectedly. Would you like to send information about this to the developer?.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.ReleaseNotes">
+            <summary>
+              Looks up a localized string similar to Release notes:.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.UpdateCancelButton">
+            <summary>
+              Looks up a localized string similar to Cancel.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.UpdateHeader">
+            <summary>
+              Looks up a localized string similar to A new version of {0} is available!.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.UpdateInstallButton">
+            <summary>
+              Looks up a localized string similar to Install.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.HockeySDKStrings.UpdateText">
+            <summary>
+              Looks up a localized string similar to A new version of {0} is available (your version is {1}, new version is {2}). Would you like to update now?.
+            </summary>
+        </member>
+        <member name="M:HockeyApp.IAppVersionExtensions.DownloadMsi(HockeyApp.IAppVersion,System.Func{HockeyApp.DownloadProgressInformation,System.Boolean},System.Action)">
+            <summary>
+            Downloads the new version to a temporary folder and provides the generated filename.
+            The progress delegate returns, if the download process should be canceled. Return false, if not.
+            </summary>
+            <param name="this">The this.</param>
+            <param name="progress">The progress.</param>
+            <param name="completed">callbakc when download is completed.</param>
+            <returns>
+            Filename of the msi-file
+            </returns>
+        </member>
+        <member name="M:HockeyApp.IAppVersionExtensions.InstallVersion(HockeyApp.IAppVersion)">
+            <summary>
+            Installs the app. If not downloaded, the download will start implicitly.
+            After starting the install process a call to Environment.Exit is done.
+            </summary>
+            <param name="this"></param>
+        </member>
+        <member name="M:HockeyApp.IUpdateManager.CheckForUpdates(System.Boolean,System.Func{System.Boolean},System.Action{HockeyApp.IAppVersion})">
+            <summary>
+            Check for available updates synchronously. The version information has to be in the format d*.d*[.d*.[d*]].
+            If System.Version.TryParse() fails, no Version compare can be executed
+            </summary>
+            <param name="autoShowUi">Use the default update dialogs</param>
+            <param name="shutdownActions">Callback to gracefully stop your application. If using default-ui, call has to be provided.</param>
+            <param name="updateAvailableAction">Callback for available versions, if you want to provide own update dialogs</param>
+        </member>
+        <member name="M:HockeyApp.IUpdateManager.CheckForUpdatesAsync(System.Boolean,System.Func{System.Boolean},System.Action{HockeyApp.IAppVersion})">
+            <summary>
+            Check for available updates asynchronously. The version information has to be in the format d*.d*[.d*.[d*]].
+            If System.Version.TryParse() fails, no Version compare can be executed
+            </summary>
+            <param name="autoShowUi">Use the default update dialogs</param>
+            <param name="shutdownActions">The shutdown actions.</param>
+            <param name="updateAvailableAction">Callback for available versions, if you want to provide own update dialogs</param>
+            <returns>false if no new version is found</returns>
+        </member>
+        <member name="T:HockeyApp.LocalizedStrings">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:HockeyApp.ResourceWrapper.Item(System.String)">
+            <summary>
+            The indexer is needed to be able to use indexer-syntax in XAML to data bind
+            </summary>
+            <param name="index">The name of the property.</param>
+            <returns>The value of the property, or null if the property doesn't exist.</returns>
+        </member>
+        <member name="T:HockeyApp.NamespaceDoc">
+            <summary>
+            Main namespace for HockeyApp SDK for windows
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>
