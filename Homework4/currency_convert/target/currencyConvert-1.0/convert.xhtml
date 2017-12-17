@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Online currency converter</title>
+    </h:head>
+    <h:body>
+        <h1>Online currency converter</h1><hr/>
+        <h:form>
+            <h2>Currency converter</h2>
+            <p>
+                <h:outputLabel for="currFrom" value="From currency &nbsp;"/>
+                <h:selectOneMenu value="#{CurrencyConvertManager.fromCurrency}">
+                    <f:selectItem itemValue="SEK"/>
+                    <f:selectItem itemValue="EUR"/>
+                    <f:selectItem itemValue="USD"/>
+                    <f:selectItem itemValue="GBP"/>
+                </h:selectOneMenu>                
+            </p>
+            <p>
+                <h:outputLabel for="currTo" value="To currency &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"/>
+                <h:selectOneMenu value="#{CurrencyConvertManager.toCurrency}">
+                    <f:selectItem itemValue="SEK"/>
+                    <f:selectItem itemValue="EUR"/>
+                    <f:selectItem itemValue="USD"/>
+                    <f:selectItem itemValue="GBP"/>
+                </h:selectOneMenu>
+            </p>
+            <p>    
+                <h:outputLabel for="amountTo" value="Amount from currency &nbsp;&nbsp;"/>
+                <h:inputText id="amountFromCurrency" value="#{CurrencyConvertManager.amountFromCurrency}"/>
+            </p>
+            <p>
+                <h:commandButton value="Convert" action="#{CurrencyConvertManager.convert}"/>
+            </p>
+            <hr/>
+
+            <h2>Result</h2>
+            <p>
+                <h:outputText id="amountToCurrency" value="#{CurrencyConvertManager.currentConvert.convertedResult}"/>
+            </p>
+        </h:form>
+
+    </h:body>
+</html>
+
